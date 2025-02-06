@@ -1,13 +1,13 @@
 
 body{
-    color: #405140;
+    color: #264653;
     margin: 0;
     text-align: center; /* will center everything that does not have a margin */
     font-family: 'Merriweather', serif;
 }
 
 .top-container{
-    background-color: #c1f8ff;
+    background-color: #C4B7E7;
     position: relative;
     padding-top: 100px;
 }
@@ -21,7 +21,7 @@ body{
     margin-top: 50px;
 }
 a{
-    color: #0d7c80;
+    color: #264653;
     font-family: 'Montserrat', sans-serif;
     margin: 10px 20px;
     text-decoration: none;
@@ -36,7 +36,7 @@ h1{
     font-size: 540%;
     margin: 50px auto 0 auto;
     font-family: 'Sacramento', cursive;
-    color: #4a8383;
+    color: #264653;
     line-height: 1;
     
 }
@@ -125,7 +125,7 @@ hr {
   }
   
   .btn:hover {
-    background: #30e3cb;
+    background: #C4B7E7;
     background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ad);
     background-image: -moz-linear-gradient(top, #30e3cb, #2bc4ad);
     background-image: -ms-linear-gradient(top, #30e3cb, #2bc4ad);
