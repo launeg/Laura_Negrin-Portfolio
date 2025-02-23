@@ -11,12 +11,16 @@ body{
     position: relative;
     padding-top: 100px;
 }
+.top-container-nav {
+    padding-top: 60px; /* Adjust as needed */
+  }
+  
 .border{
     border-radius: 100%;
   }
 
 .bottom-container{
-    background-color: #66BFBF;
+    background-color: #C4B7E7;
     padding: 50px 0 20px;
     margin-top: 50px;
 }
@@ -68,8 +72,8 @@ hr {
 
 
 .skill-row{
-    width: 50%;
-    margin: 80px auto 80px auto;
+    width: 80%;
+    margin: 50px auto 50px auto;
     text-align: left;
     line-height: 2;
 }
@@ -103,7 +107,7 @@ hr {
 }
 
 .btn {
-    background: #11cdd4;
+    background: #C4B7E7;
     background-image: -webkit-linear-gradient(top, #11cdd4, #11999e);
     background-image: -moz-linear-gradient(top, #11cdd4, #11999e);
     background-image: -ms-linear-gradient(top, #11cdd4, #11999e);
@@ -138,4 +142,54 @@ hr {
     color: #EAF6F6;
     font-family: 'Montserrat', sans-serif;
 }
+.navbar {
+    background: rgba(0, 0, 0, 0.5); /* Transparent black */
+    width: 100%;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    display: inline;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: #ffcb05;
+  }
+  
 
+  .hide {
+    display: none;
+  }
+  #gameCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: transparent;
+}
+
+  

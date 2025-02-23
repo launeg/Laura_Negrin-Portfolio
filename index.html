@@ -1,71 +1,147 @@
 <!DOCTYPE html>
-<html> 
-  <head> 
-    <meta charset="utf-8">
-    <title>Laura Negrin</title> 
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
-    <style>
-      .experience p {
-        margin: 20px 0; 
-        line-height: 1.5;
-      }
-    </style>
-  </head>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Laura Negrin</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+.experience p {
+margin: 20px 0;
+line-height: 1.5;
+}
+</style>
+<style>
+  .top-container {
+      position: relative;
+  }
+  #gameCanvas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      background-color: transparent;
+  }
+  .experience p {
+      margin: 20px 0;
+      line-height: 1.5;
+  }
+</style>
 
-  <body> 
-      <div class="top-container">
-        <img class ="top-cloud" src="images/cloud.png" alt="cloud-img">
-        <h1>I'm Laura.</h1>
-        <h2> a programmer.</h2><br>
-        <img class ="bottom-cloud" src="images/cloud.png" alt="cloud-img">
-        <img src="images/mountain.png" alt="mountain-img">
-      </div>
-    
-      <div class="middle-container">
-        <div class="profile">
-          <img class= "border" src="images/laura.jpg" width="170"
-          height="200" alt="Laura's profile picture">
-          <h2>Hello.</h2>
-          <p>I am Laura Negrin, a highly motivated computer science graduate with a B.A. from Rutgers University, specializing in Computer Science and holding a minor in Mathematics. My academic journey has been marked by a dedication to excellence, as reflected in my GPA of 3.8/4.0. My passion for technology and problem-solving drives me to continually expand my skillset and excel in the field.</p>
+</head>
+
+<body>
+  <!-- <header>
+    <nav class="navbar">
+        <div class="hamburger-menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
         </div>
-        <hr>
-        <div class="skills">
-          <h2>My Skills.</h2>
-          <div class="skill-row">
-            <img class= "code_img" src="images/web-development.png" alt="web design img">
-            <h3>Programming Languages</h3>
-            <p>I have experience with various programming languages, including C, C++, Java, Python, Swift, JavaScript, HTML/CSS, SQL, PHP, and MySQL.</p>
-          </div>
-          <div class="skill-row">
-            <img class= "paint_img" src="images/paint-palette.png" alt="paint img">
-            <h3>Frameworks and Tools</h3>
-            <p>I am proficient in using frameworks and tools such as React, AngularJS, AWS CLI and SDK, Git/Github, Linux, and Xcode for development projects.</p>
-          </div>
+        <div class="nav-menu hide">
+            <a href="#">Home</a>
+            <a href="#">Career</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
         </div>
-        <br>
-        <hr>
-        <div class="experience">
-          <h2>My Experience.</h2>
-          <div class="experience-row">
-            <h3>Amazon Web Services (AWS) - Cloud Support Associate (May - Aug 2023)</h3>
-            <p>Managed and configured cloud resources on the AWS platform. Supported the deployment and maintenance of applications utilizing AWS services. Participated actively in troubleshooting in cloud infrastructure. Assisted in monitoring and ensured the security and compliance of cloud resources. Gained hands-on experience with AWS tools and services such as EC2, S3, and RDS, successfully creating a website implementing face recognition using various AWS tools like Rekognition, Amplify, Lambda, and others.</p>
-          </div>
-          <div class="experience-row">
-            <h3>Rutgers University - Web Developer Intern (September - December 2022)</h3>
-            <p>Developed a web-based application to replicate the submission and management of the SASN-IT Access Request Forms that used to be filled out on paper, facilitating the form's compliance, speed, and effectiveness. Utilized Front-End skills such as JavaScript, HTML, and CSS; used Back-End skills such as PHP and SQL to create practical web-based applications. Collaborated with the IT team for software development, maintenance, and documentation of popular student applications such as START and GradTracker.</p>
-          </div>
-          <div class="experience-row">
-            <h3>Amanecer Taxes & Accounting - Accounting Bookkeeper (Part-Time Job, January 2019- April 2022)</h3>
-            <p>Maintained records and tracked daily financial transactions. Prepared financial reports by collecting, analyzing, and summarizing account information and trends. Created invoices and managed the accounts receivable ledger. Operated accounting software: QuickBooks. Conducted clerical work, including filing documents and providing customer service. Prepared and processed payroll information and reconciled records of bank statements for 50 small businesses.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="bottom-container">
-        <a class="footer-link" href="https://www.linkedin.com/in/laura-negrin-a6b05a198/">LinkedIn</a>
-        <p class = "name">© 2023 Laura Negrin.</p>
-      </div>
-  </body>
+    </nav>
+</header> -->
+
+
+<div class="top-container">
+  <img class="top-cloud" src="images/cloud.png" alt="cloud-img">
+  <h1>I'm Laura.</h1>
+  <h2>A programmer passionate about cloud and web development.</h2>
+  <canvas id="gameCanvas"></canvas>
+  <img class="bottom-cloud" src="images/cloud.png" alt="cloud-img">
+  <img src="images/mountain.png" alt="mountain-img">
+</div>
+
+<div class="hamburger-menu">
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"></span>
+</div>
+<div class="nav-menu hide">
+<a href="#">Home</a>
+<a href="#">Career</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</div>
+<div class="middle-container">
+<div class="profile">
+<img class= "border" src="images/laura.jpg" width="170"
+height="200" alt="Laura's profile picture">
+<h2>Hello.</h2>
+<p>I'm Laura Negrin, a Computer Science graduate from Rutgers University with a passion for building innovative web and cloud solutions. Driven by a love for problem-solving and a solid foundation in mathematics, I'm eager to contribute my skills in front-end and back-end development to create impactful applications. I'm also a AWS Certified Cloud Practitioner.</p>
+</div>
+<hr>
+<div class="skills">
+<h2>My Skills.</h2>
+<div class="skill-row">
+<img class= "code_img" src="images/web-development.png" alt="web design img">
+<h3>Front-End Development</h3>
+<p>Proficient in JavaScript (React, Angular, NodeJS, Bootstrap), HTML/CSS, and familiar with HTML5. Experienced in building responsive and dynamic user interfaces.</p>
+</div>
+<div class="skill-row">
+<img class= "paint_img" src="images/paint-palette.png" alt="paint img">
+<h3>Back-End & Database</h3>
+<p>Experienced with server-side technologies including Python (Flask) and Java (Maven). Skilled in database management using SQL, MySQL, NoSQL, and Amazon RDS.</p>
+</div>
+<div class="skill-row">
+<img class= "paint_img" src="images/AWS.png" alt="paint img">
+<h3>Cloud Technologies</h3>
+<p>Hands-on experience with AWS services (EC2, S3, RDS, CloudFront, Lambda, API Gateway) and proficient with AWS CLI and SDK. Familiar with Docker and Kubernetes for containerization.</p>
+</div>
+</div>
+<br>
+
+<hr>
+<div class="skills">
+<h2>My Certificates.</h2>
+<div class="skill-row">
+<img class= "code_img" src="images/AWS-Certified-Solutions-Architect-Associate_badge.png" alt="web design img">
+<h3>AWS Certified Solutions Architect</h3>
+<p>AWS Certified Solutions Architect - Associate is focused on the design of cost and performance optimized solutions. This is an ideal starting point for candidates with AWS Cloud or strong on-premises IT experience. This exam does not require deep hands-on coding experience, although familiarity with basic programming concepts would be an advantage.</p>
+<!-- https://aws.amazon.com/certification/certified-solutions-architect-associate/ -->
+<div class="skill-row">
+<img class= "paint_img" src="images/AWS-Certified-Cloud-Practitioner_badge.png" alt="paint img">
+<h3>AWS Certified Cloud Practitioner</h3>
+<p>The AWS Certified Cloud Practitioner validates foundational, high-level understanding of AWS Cloud, services, and terminology.  This is a good starting point on the AWS Certification journey for individuals with no prior IT or cloud experience switching to a cloud career or for line-of-business employees looking for foundational cloud literacy.</p>
+</div>
+</div>
+<br>
+<hr>
+<div class="experience">
+<h2>My Experience.</h2>
+<div class="experience-row">
+<h3>Amazon Web Services (AWS) - Cloud Support Associate (2024-Present)</h3>
+<p>Enhanced media delivery for clients by identifying and resolving vulnerabilities in AWS CloudFront and Lambda@Edge, ensuring optimal performance and security. Provided expert-level support for AWS services, including CloudFront, S3, and Media Services. Utilized tools like Wireshark for in-depth network analysis to troubleshoot customer issues, improving resolution times.</p>
+</div>
+<div class="experience-row">
+<h3>Amazon Web Services (AWS) - CSA Intern (Summer 2023)</h3>
+<p>Developed a full-stack application leveraging AWS Lambda, Rekognition, S3, and SageMaker. Designed a secure front-end using AWS Amplify and React with a Lambda backend and API Gateway, ensuring client data security. Implemented facial recognition functionality, enabling users to upload images, run inference, and view results, enhancing user engagement.</p>
+</div>
+<div class="experience-row">
+<h3>Rutgers University - SWE & Technical Project Manager (2022 – 2024)</h3>
+<p>Led the front-end engineering of the SASN-IT Access Request Form and Dashboard using Angular, Bootstrap, and JavaScript, improving user experience and streamlining access for faculty and staff. Integrated front-end and back-end development efforts, enhancing the submission-to-approval cycle. Implemented Rutgers VPN solutions to ensure secure remote access for the development team.</p>
+</div>
+<div class="experience-row">
+<h3>Amanecer Taxes & Accounting - Accounting Bookkeeper (Part-Time Job, January 2019- April 2022)</h3>
+<p>Maintained records and tracked daily financial transactions. Prepared financial reports by collecting, analyzing, and summarizing account information and trends. Created invoices and managed the accounts receivable ledger. Operated accounting software: QuickBooks. Conducted clerical work, including filing documents and providing customer service. Prepared and processed payroll information and reconciled records of bank statements for 50 small businesses.</p>
+</div>
+</div>
+</div>
+
+<div class="bottom-container">
+<a class="footer-link" href="https://www.linkedin.com/in/laura-negrin-a6b05a198/">LinkedIn</a>
+<p class = "name">© 2023 Laura Negrin.</p>
+</div>
+</body>
+<script src="index.js"></script>
+
 </html>
