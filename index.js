@@ -27,15 +27,24 @@ draw() {
     img.src = 'images/tut.png';
     c.drawImage(img, this.position.x, this.position.y, this.width, this.height);
   }
-  
   update() {
     this.draw()
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
-    if (this.position.y + this.height + this.velocity.y < canvas.height)
-        this.velocity.y += gravity
-    else { this.velocity.y = 0 }
+    if (this.position.y + this.height + this.velocity.y < canvas.height) {
+      this.velocity.y += gravity
+    } else { 
+      this.velocity.y = 0 
+    }
+  
+    // With this the character stays on screen
+    if (this.position.x < 0) this.position.x = 0
+    if (this.position.x + this.width > canvas.width) 
+      this.position.x = canvas.width - this.width
+    if (this.position.y + this.height > canvas.height) 
+      this.position.y = canvas.height - this.height
   }
+  
 }
 
 const player = new Player({
@@ -86,7 +95,6 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
-// Update canvas size on window resize
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;

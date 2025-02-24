@@ -78,6 +78,13 @@ hr {
     line-height: 2;
 }
 
+.experience-row{
+    width: 95%;
+    margin: 10px auto 10px auto;
+    text-align: left;
+    line-height: 2;
+}
+
 .top-cloud{
     position: absolute;
     right: 300px;
@@ -191,5 +198,11 @@ hr {
     z-index: 1;
     background-color: transparent;
 }
+canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+  }
+  
 
   
