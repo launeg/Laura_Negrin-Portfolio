@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 
-/** ======= Tunables ======= */
 const NUM_CLOUDS = 10;
 const CLOUD_SPEED_MIN = 0.15;
 const CLOUD_SPEED_MAX = 0.6;
@@ -11,22 +10,22 @@ const CLOUD_SIZE_MAX = 320;
 const CLOUD_START_DELAY_MAX_MS = 6000;
 const CLOUD_Y_PADDING = 40;
 
-const NUM_POINTS = 8;          // how many coins/points to keep on screen
+const NUM_POINTS = 4;          
 const POINT_RADIUS_MIN = 10;
 const POINT_RADIUS_MAX = 16;
-const POINT_DRIFT = 0.5;       // tiny ambient drift for coins so they feel alive
+const POINT_DRIFT = 0.5;       
 const POINT_VALUE = 10;
 
 const PLAYER_SPEED = 6;
 const JUMP_VELOCITY = -20;
 const GRAVITY = 0.5;
-/** ======================== */
+
 
 export default function GameCanvas({ sectionRef, onScore }) {
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
 
-  // keep callback current without retriggering the effect
+  //kept callback current without retriggering the effect
   const scoreCbRef = useRef(onScore);
   useEffect(() => { scoreCbRef.current = onScore; }, [onScore]);
 
@@ -37,7 +36,7 @@ export default function GameCanvas({ sectionRef, onScore }) {
 
     const ctx = canvas.getContext('2d', { alpha: true });
 
-    // --- Size canvas to the Home section ---
+    // size canvas to the Home section
     const sizeToSection = () => {
       const rect = sectionEl.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
@@ -58,24 +57,55 @@ export default function GameCanvas({ sectionRef, onScore }) {
     playerImg.src = '/Laura_Negrin-Portfolio/images/tut.png';
     const cloudImg = new Image();
     cloudImg.src = '/Laura_Negrin-Portfolio/images/cloud.png';
+    const grassImg = new Image();
+    grassImg.src = '/Laura_Negrin-Portfolio/images/grass.png'
+    const rainierImg = new Image();
+    rainierImg.src = '/Laura_Negrin-Portfolio/images/rainier.png'
     let loaded = 0, assetsReady = false;
-    const done = () => { loaded += 1; assetsReady = loaded >= 2; };
-    playerImg.onload = done; cloudImg.onload = done;
+    const done = () => { loaded += 1; assetsReady = loaded >= 4; };
+    playerImg.onload = done; 
+    cloudImg.onload = done; 
+    grassImg.onload = done;
+    rainierImg.onload = done;
+    
+    const drawGrass = () => {
+      const grassHeight = 100; 
+      const grassWidth = 50;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const visibleHeight = rect.height;
+    
+      for (let x = -10; x < canvas.width; x += grassWidth) {
+        ctx.drawImage(grassImg, x, visibleHeight - grassHeight, 100, grassHeight+30);
+      }
+    };
 
-    // --- Game state ---
+    const drawRainier = () => {
+      const rect = sectionRef.current.getBoundingClientRect();
+      const visibleHeight = rect.height;
+      const visibleWidth = rect.width;
+      const mtnHeight = visibleHeight; 
+      const mtnWidth = visibleWidth/2;
+
+      ctx.save();
+      ctx.globalAlpha = 0.5;
+      ctx.drawImage(rainierImg, visibleWidth / 4, visibleHeight - mtnHeight * 0.85, mtnWidth, mtnHeight * 0.85);
+      ctx.restore();
+    };
+
+    // Game player + points + clouds
     let totalScore = 0;
 
     const player = { x: 50, y: 50, w: 150, h: 150, vx: 0, vy: 1 };
     const keys = { a: false, d: false };
 
     const rand = (a, b) => Math.random() * (b - a) + a;
-    const choice = (arr) => arr[Math.floor(Math.random() * arr.length)];
-    const nowMs = () => performance.now();
+    const direction = (arr) => arr[Math.floor(Math.random() * arr.length)]; //cloud direction
+    const nowMs = () => performance.now(); // for random delay
 
-    // Clouds
+    // Moving Clouds
     const makeCloud = () => {
       const { width: W, height: H } = sectionEl.getBoundingClientRect();
-      const dir = choice([1, -1]);
+      const dir = direction([1, -1]);
       const w = rand(CLOUD_SIZE_MIN, CLOUD_SIZE_MAX);
       const h = w * 0.6;
       const y = rand(CLOUD_Y_PADDING, Math.max(CLOUD_Y_PADDING, H - h - CLOUD_Y_PADDING));
@@ -90,9 +120,10 @@ export default function GameCanvas({ sectionRef, onScore }) {
 
     const makePoint = () => {
       const { width: W, height: H } = sectionEl.getBoundingClientRect();
+      const minY = H * 0.4; 
       const r = rand(POINT_RADIUS_MIN, POINT_RADIUS_MAX);
       const x = rand(r + 8, Math.max(r + 8, W - r - 8));
-      const y = rand(80 + r, Math.max(80 + r, H - r - 8)); 
+      const y = rand(minY + r, Math.max(minY + r, H - r - 20)); 
       const driftX = rand(-POINT_DRIFT, POINT_DRIFT);
       const driftY = rand(-POINT_DRIFT, POINT_DRIFT);
       return { x, y, r, driftX, driftY, baseX: x, baseY: y, t: Math.random() * Math.PI * 2 };
@@ -136,7 +167,6 @@ export default function GameCanvas({ sectionRef, onScore }) {
     };
     document.addEventListener('visibilitychange', onVis);
 
-    // Helpers
     const rectCircleCollides = (rect, c) => {
       const testX = Math.max(rect.x, Math.min(c.x, rect.x + rect.w));
       const testY = Math.max(rect.y, Math.min(c.y, rect.y + rect.h));
@@ -145,10 +175,10 @@ export default function GameCanvas({ sectionRef, onScore }) {
       return (distX * distX + distY * distY) <= (c.r * c.r);
     };
 
-    // Main loop
+    // main draw
     const loop = () => {
       const { width: W, height: H } = sectionEl.getBoundingClientRect();
-      ctx.clearRect(0, 0, W, H);
+      ctx.clearRect(0, 0, W, H); // must clear once per loop at beginning (not after or it'll remove all draws)
 
       for (const c of clouds) {
         if (nowMs() >= c.startAt) {
@@ -163,6 +193,8 @@ export default function GameCanvas({ sectionRef, onScore }) {
       }
 
       if (assetsReady) {
+        drawRainier();
+        drawGrass();
         player.vx = 0;
         if (keys.d && player.x < W - player.w) player.vx = PLAYER_SPEED;
         if (keys.a && player.x > 0)            player.vx = -PLAYER_SPEED;
@@ -179,7 +211,7 @@ export default function GameCanvas({ sectionRef, onScore }) {
         if (player.x < 0) player.x = 0;
         if (player.x + player.w > W) player.x = W - player.w;
 
-        // Collectibles
+        // draw points
         for (let i = 0; i < points.length; i++) {
           const p = points[i];
 
@@ -192,6 +224,7 @@ export default function GameCanvas({ sectionRef, onScore }) {
           if (p.y < p.r + 80) p.y = p.r + 80;
           if (p.y > H - p.r - 4) p.y = H - p.r - 4;
 
+          // todo: could be a helper method
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.r + 2, 0, Math.PI * 2);
           ctx.fillStyle = 'rgba(0,0,0,0.25)'; 

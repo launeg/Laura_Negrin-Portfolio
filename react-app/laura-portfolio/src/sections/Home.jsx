@@ -36,8 +36,8 @@ export default function Home() {
   return (
     <section id="home" ref={homeRef} className="top-container">
       <img className="top-cloud" src="/Laura_Negrin-Portfolio/images/cloud.png" alt="cloud" />
-      <h1>I'm Laura.</h1>
-      <h2>A programmer passionate about cloud and web development.</h2>
+      <br/>
+      <h1>Hi, I'm Laura</h1>
       <img className="bottom-cloud" src="/Laura_Negrin-Portfolio/images/cloud.png" alt="cloud" />
 
       <div className={`score-hud ${nearBoundary ? 'fade' : ''}`}>

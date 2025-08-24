@@ -9,20 +9,19 @@ const LINKS = [
     { id: 'contact',          label: 'Contact' },
 ];
 
-const NAVBAR_HEIGHT = 84;            // keep in sync with your CSS --nav-h
-const CLICK_GRACE_MS = 700;        // ignore observer updates right after a click
+const NAVBAR_HEIGHT = 84;            //any changes must also update CSS --nav-h
+const CLICK_GRACE_MS = 700;      
 
 export default function Navbar(){
     const [active, setActive] = useState('home');
 
-    // During a smooth scroll from a click, ignore observer updates for a short window
+    // ignore observer updates for a small grace period (issues with smooth scroll + click on navbar)
     const ignoreUntilRef = useRef(0);
-    const ratiosRef = useRef(new Map()); // id -> latest intersectionRatio
-
+    const ratiosRef = useRef(new Map());
     const go = useCallback((id) => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setActive(id); // immediate feedback
+        setActive(id);
         ignoreUntilRef.current = performance.now() + CLICK_GRACE_MS;
     }, []);
 
@@ -33,11 +32,11 @@ export default function Navbar(){
 
         if (!sections.length) return;
 
-        // Initialize ratios
+        // Initialize ratios of nav button spce
         LINKS.forEach(({ id }) => ratiosRef.current.set(id, 0));
 
         const pickBest = () => {
-            // Edge fallbacks
+            //fallbacks
             const y = window.scrollY;
             const viewport = window.innerHeight;
             const docHeight = document.documentElement.scrollHeight;
@@ -51,7 +50,6 @@ export default function Navbar(){
                 return;
             }
 
-            // Otherwise, pick the section with the highest ratio
             let bestId = active;
             let bestRatio = -1;
             for (const [id, ratio] of ratiosRef.current.entries()) {
@@ -63,12 +61,11 @@ export default function Navbar(){
             if (bestId && bestId !== active) setActive(bestId);
         };
 
+        // determine most visible section to set navbutton active state
         const io = new IntersectionObserver(
             (entries) => {
-                // Ignore updates right after a click-driven smooth scroll
                 if (performance.now() < ignoreUntilRef.current) return;
 
-                // Update ratios and choose best
                 for (const e of entries) {
                     const id = e.target.id;
                     ratiosRef.current.set(id, e.isIntersecting ? e.intersectionRatio : 0);
@@ -77,16 +74,13 @@ export default function Navbar(){
             },
             {
                 root: null,
-                // Move the top boundary down by nav height, shrink bottom to bias top-most section
                 rootMargin: `-${NAVBAR_HEIGHT}px 0px -60% 0px`,
-                // Include 0 so the top section can register even with tiny overlap; others smooth values
                 threshold: [0, 0.2, 0.35, 0.5, 0.75, 0.9],
             }
         );
 
         sections.forEach((sec) => io.observe(sec));
 
-        // Also handle manual top/bottom edges during normal scrolling
         let raf = 0;
         const onScroll = () => {
             if (performance.now() < ignoreUntilRef.current) return;

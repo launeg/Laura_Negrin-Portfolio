@@ -1,4 +1,4 @@
-body{ color:#264653; margin:0; text-align:center; font-family:'Merriweather', serif; }
+body{ color:#FAF9F6; margin:0; text-align:center; font-family:'Merriweather', serif; }
 a{ color:#264653; font-family:'Montserrat', sans-serif; margin:10px 20px; text-decoration:none; }
 a:hover{ color:#EAF6F6; }
 h2,h3{ font-family:'Montserrat', sans-serif; }
@@ -9,11 +9,22 @@ hr{ border:0; border-top:6px dotted rgb(209,207,207); width:5%; }
 
 
 /* ---------------------- About Section ---------------------- */
+#about {
+  min-height: 50vh;
+}
 .about {
   display: grid;
   grid-template-columns: 220px 1fr;
   gap: 32px;
   align-items: center;
+}
+
+.aboutText {
+  font-family:'Montserrat', sans-serif;
+  font-size: larger;
+  letter-spacing: 0.2px;
+  line-height: 2;
+  margin: 10px 0 16px;
 }
 
 .about-media {
@@ -37,7 +48,6 @@ hr{ border:0; border-top:6px dotted rgb(209,207,207); width:5%; }
   display: block;
 }
 
-/* Offset purple ring around the photo */
 .border-container::before {
   content: "";
   position: absolute;
@@ -78,15 +88,15 @@ hr{ border:0; border-top:6px dotted rgb(209,207,207); width:5%; }
 .code_img,.paint_img{ width:15%; margin:30px; }
 .code_img{ float:left; } 
 .paint_img{ float:right; }
-.top-cloud{ position:absolute; right:300px; top:50px; }
-.bottom-cloud{ position:absolute; left:300px; bottom:300px; }
+.top-cloud{ position:absolute; right:300px; top:50px; width: 10%; height: 15%}
+.bottom-cloud{ position:absolute; left:300px; bottom:300px; width: 10%; height: 15%}
 :root{
-  --brand:#264653;
-  --accent:#11999E;
-  --accent-2:#30e3cb;
-  --bg-soft:#C4B7E7;
+  --accent:#13022b;
+  --accent-2:#7859a5;
+  --bg-soft:#ceedf4;
   --text:#264653;
   --text-on-dark:#fff;
+  --text-on-light: #264653;
   --nav-h: 84px;
 }
 html { 
@@ -96,8 +106,8 @@ body {
   padding-top: var(--nav-h);
   background: var(--bg-soft);
 }
-h1{ font-size:clamp(40px, 8vw, 72px); margin:50px auto 0; }
-h2{ font-size:clamp(22px, 3vw, 40px); font-weight:400; margin-top:0px; color:#5ba1a1; }
+h1{ font-family:'Merriweather', serif; font-size:clamp(40px, 8vw, 72px); margin:50px auto 0; color:var(--text-on-light)}
+h2{ font-size:clamp(22px, 3vw, 40px); font-weight:400; margin-top:0px; color:var(--accent-2); }
 h3{ color:var(--accent); }
 .contact-message{
   max-width:700px;
@@ -109,8 +119,8 @@ h3{ color:var(--accent); }
 .btn{
   display:inline-block;
   border:2px solid var(--accent);
-  background:linear-gradient(to bottom, #d1f5f6, #a5f1f4);
-  color: #044246;
+  background:linear-gradient(to bottom, var(--accent-2), var(--accent));
+  color: var(--text-on-dark);
   font-family:'Montserrat', sans-serif;
   font-size:18px;
   padding:10px 18px;
@@ -138,22 +148,30 @@ main, section{ position:relative; z-index:5; }
   position: fixed; inset: 0 0 auto 0;
   display: flex; align-items: center; gap: 16px;
   padding: 20px 16px;
-  background: rgba(43, 30, 56, 0.65);
+  background: var(--accent);
   backdrop-filter: blur(8px);
   z-index: 100;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family:'Montserrat', sans-serif;
 }
 
 .navbar .brand {
-  display: inline-flex; align-items: center; gap: 10px;
-  color: #fff; font-weight: 700; letter-spacing: .2px;
+  display: inline-flex; 
+  align-items: center; 
+  gap: 10px;
+  color: var(--text-on-dark); 
+  font-weight: 700; 
+  letter-spacing: .2px;
   text-decoration: none;
   white-space: nowrap;
 }
 .navbar .brand::after {
-  content: ""; width: 8px; height: 8px; border-radius: 50%;
-  background: linear-gradient(45deg, #2bc4ad, #11999e);
-  box-shadow: 0 0 8px rgba(141, 231, 218, 0.6);
+  content: ""; 
+  width: 8px; 
+  height: 8px; 
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f0edf0, #ce97d5);
+  box-shadow: 0 0 8px rgba(82, 157, 227, 0.6);
 }
 
 .navbar .nav-links {
@@ -188,7 +206,6 @@ section[id] { scroll-margin-top: 84px; }
 .top-container{
   background:var(--bg-soft);
   padding-top:10px;
-  min-height:100vh;
 }
 .skill-row, .experience-row{ max-width:1100px; width:90%; }
 @media (max-width:900px){
@@ -199,15 +216,14 @@ section[id] { scroll-margin-top: 84px; }
 /* Home section is the game stage */
 #home { position: relative; min-height: 90vh; overflow: hidden; }
 
-/* Canvas stays inside Home only */
 #gameCanvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;            /* behind Home content */
+  z-index: 0;           
   background: transparent;
-  pointer-events: none;  /* click-through */
+  pointer-events: none;  
 }
 
 .instructions{
@@ -233,7 +249,6 @@ section[id] { scroll-margin-top: 84px; }
   pointer-events: none;
 }
 
-/* Score HUD*/
 .score-hud {
   position: fixed;
   top: calc(var(--nav-h) + 12px); 
@@ -258,16 +273,17 @@ section.section {
   padding: clamp(48px, 7vw, 96px) 0;
   background: #eaddef;
   position: relative;
+  color: var(--text-on-light);
+  font-family:'Montserrat', sans-serif;
 }
 
 section.section .container {
   width: min(1100px, 92vw);
   margin: 0 auto;
-  min-height: 50vh;
 }
 
 section.section.alt {
-  background: #edc0ff;
+  background: #eadfef;
 }
 
 .section + .section::before {
@@ -277,7 +293,7 @@ section.section.alt {
   transform: translateX(-50%);
   width: min(1100px, 92vw);
   border-top: 1px solid rgba(0,0,0,0.06);
-  margin-top: -1px; /* sits between sections */
+  margin-top: -1px; 
 }
 
 .section h2.section-title {
@@ -294,6 +310,10 @@ section.section.alt {
 
 /* ---------------------- Skills Section ---------------------- */
 
+.skillSubtitle {
+  font-size: large;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -303,10 +323,9 @@ section.section.alt {
   padding: 16px; border: 1px solid rgba(0,0,0,0.08);
   border-radius: 12px; background: #fff;
 }
-.skill-card h3 { margin: 0 0 8px; font-size: 18px; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .skill-tag {
-  background: #eef7f7; color: #0d6b6b; padding: 4px 8px; border-radius: 999px; font-size: 12px;
+  background: #eef7f7; color: var(--accent-2); padding: 4px 8px; border-radius: 999px; font-size: 12px;
 }
 
 /* ---------------------- Contact Section ---------------------- */
@@ -331,11 +350,11 @@ section.section.alt {
   justify-content: center;
   transition: all 0.2s ease;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  color: var(--brand); /* uses your main accent color */
+  color: var(--text-on-light);
 }
 
 .contact-btn:hover {
-  background: var(--bg-soft);
+  background: var(--text-on-light);
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
   color: #fff;

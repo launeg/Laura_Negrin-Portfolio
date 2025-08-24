@@ -2,7 +2,7 @@ export default function Experience(){
     return (
       <section id="experience" className="section alt">
         <div className="experience">
-          <h2 className="section-title">My Experience.</h2>
+          <h2 className="section-title">My Experience</h2>
           <div className="experience-row">
             <h3>Amazon Web Services (AWS) - Cloud Support Engineer (2024 - Present)</h3>
             <p>Enhanced media delivery for clients by identifying and resolving vulnerabilities in AWS CloudFront and Lambda@Edge, ensuring optimal performance and security. Provided expert-level support for AWS services, including CloudFront, S3, and Media Services. Utilized tools like Wireshark for in-depth network analysis to troubleshoot customer issues, improving resolution times. Currently, I'm working on becoming a CloudFront Subject Matter Expert.</p>

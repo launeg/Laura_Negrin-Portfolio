@@ -2,7 +2,7 @@ export default function Certificates(){
     return (
       <section id="certs" className="section">
         <div className="container">
-          <h2 className="section-title">My Certificates.</h2>
+          <h2 className="section-title">My Certificates</h2>
           <div className="skill-row">
             <img className="code_img" src="/Laura_Negrin-Portfolio/images/AWS-Certified-Solutions-Architect-Associate_badge.png" alt="SAA" />
             <h3>AWS Certified Solutions Architect</h3>

@@ -8,16 +8,14 @@ export default function About() {
             </div>
           </div>
           <div className="about-copy">
-            <h2 className="section-title">Hello</h2>
-            <p>
-              I'm Laura Negrin, a Computer Science graduate from Rutgers with a passion for
-              cloud and web development. I enjoy solving challenging problems and building 
-              solutions that make an impact.
-            </p>
+            <h2>About Me</h2>
+            <h4 className="aboutText">
+            I’m a Computer Science graduate from Rutgers University with a passion for full-stack development and cloud technologies. As an AWS Cloud Support Engineer, I gained hands-on experience working with multiple AWS services, learning how they connect and identifying common issues. I enjoy learning quickly, solving challenging problems, and building solutions that make an impact. I’m now looking to focus on more creative, developer-centered projects where I can combine technical skill with thoughtful design.
+            </h4>
             <div className="about-cta">
               <a
                 className="btn"
-                href="/LauraResumeV1.pdf"
+                href="/Laura_Negrin-Portfolio/LauraResumeV1.pdf"
                 target="_blank"
                 rel="noreferrer"
               >
