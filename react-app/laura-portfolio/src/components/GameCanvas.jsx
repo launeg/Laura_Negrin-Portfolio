@@ -55,9 +55,9 @@ export default function GameCanvas({ sectionRef, onScore }) {
     ro.observe(sectionEl);
 
     const playerImg = new Image();
-    playerImg.src = '/images/tut.png';
+    playerImg.src = '/Laura_Negrin-Portfolio/images/tut.png';
     const cloudImg = new Image();
-    cloudImg.src = '/images/cloud.png';
+    cloudImg.src = '/Laura_Negrin-Portfolio/images/cloud.png';
     let loaded = 0, assetsReady = false;
     const done = () => { loaded += 1; assetsReady = loaded >= 2; };
     playerImg.onload = done; cloudImg.onload = done;

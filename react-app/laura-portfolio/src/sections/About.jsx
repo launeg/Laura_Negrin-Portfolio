@@ -4,7 +4,7 @@ export default function About() {
         <div className="container about">
           <div className="about-media">
             <div className="border-container">
-              <img className="border" src="/images/laura.jpg" alt="Laura Negrin" />
+              <img className="border" src="/Laura_Negrin-Portfolio/images/laura.jpg" alt="Laura Negrin" />
             </div>
           </div>
           <div className="about-copy">
