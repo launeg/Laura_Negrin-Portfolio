@@ -1,7 +1,6 @@
 const canvas = document.getElementById('gameCanvas')
 const c = canvas.getContext('2d')
 
-// Make the canvas full screen
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -18,10 +17,6 @@ class Player {
     this.width = 150
   }
 
-//   draw() {
-//     c.fillStyle = 'red'
-//     c.fillRect(this.position.x, this.position.y, this.width, this.height)
-//   }
 draw() {
     const img = new Image();
     img.src = 'images/tut.png';

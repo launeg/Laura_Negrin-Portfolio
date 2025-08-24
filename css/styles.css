@@ -6,11 +6,19 @@ body{
     font-family: 'Merriweather', serif;
 }
 
-.top-container{
-    background-color: #C4B7E7;
-    position: relative;
-    padding-top: 100px;
+.top-container {
+  background-image: url('images/mountain.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: 85vh; /* Full height of the viewport */
+  width: 100vw;  /* Full width of the viewport */
+  position: relative;
+  padding-top: 100px;
+  overflow: hidden; /* Optional: hides anything overflowing */
 }
+
 .top-container-nav {
     padding-top: 60px; /* Adjust as needed */
   }

@@ -1,0 +1,342 @@
+body{ color:#264653; margin:0; text-align:center; font-family:'Merriweather', serif; }
+a{ color:#264653; font-family:'Montserrat', sans-serif; margin:10px 20px; text-decoration:none; }
+a:hover{ color:#EAF6F6; }
+h2,h3{ font-family:'Montserrat', sans-serif; }
+hr{ border:0; border-top:6px dotted rgb(209,207,207); width:5%; }
+.profile{ width:50%; margin:80px auto; line-height:2; }
+.skill-row{ width:80%; margin:50px auto; text-align:left; line-height:2; }
+.experience-row{ width:95%; margin:10px auto; text-align:left; line-height:2; }
+
+
+/* ---------------------- About Section ---------------------- */
+.about {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.about-media {
+  justify-self: center;
+}
+
+.border-container {
+  width: 200px;
+  height: 250px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.border {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Offset purple ring around the photo */
+.border-container::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-soft); 
+  z-index: -1;
+}
+
+.about-copy {
+  text-align: left;
+}
+
+.about-cta {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .about {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-copy {
+    text-align: center;
+  }
+}
+
+/* Structure CSS */
+.top-container,.bottom-container{ background-color:#C4B7E7; }
+.bottom-container{ padding:50px 0 20px; margin-top:50px; }
+.name{ color:#EAF6F6; font-family:'Montserrat', sans-serif; }
+.code_img,.paint_img{ width:15%; margin:30px; }
+.code_img{ float:left; } 
+.paint_img{ float:right; }
+.top-cloud{ position:absolute; right:300px; top:50px; }
+.bottom-cloud{ position:absolute; left:300px; bottom:300px; }
+:root{
+  --brand:#264653;
+  --accent:#11999E;
+  --accent-2:#30e3cb;
+  --bg-soft:#C4B7E7;
+  --text:#264653;
+  --text-on-dark:#fff;
+  --nav-h: 84px;
+}
+html { 
+  scroll-behavior:smooth; 
+}
+body {
+  padding-top: var(--nav-h);
+  background: var(--bg-soft);
+}
+h1{ font-size:clamp(40px, 8vw, 72px); margin:50px auto 0; }
+h2{ font-size:clamp(22px, 3vw, 40px); font-weight:400; margin-top:0px; color:#5ba1a1; }
+h3{ color:var(--accent); }
+.contact-message{
+  max-width:700px;
+  margin:0 auto 70px;
+  font-family:'Montserrat', sans-serif;
+}
+
+/* Buttons */
+.btn{
+  display:inline-block;
+  border:2px solid var(--accent);
+  background:linear-gradient(to bottom, #d1f5f6, #a5f1f4);
+  color: #044246;
+  font-family:'Montserrat', sans-serif;
+  font-size:18px;
+  padding:10px 18px;
+  border-radius:10px;
+  line-height:1;
+  margin:16px 10px;
+}
+.btn:hover{
+  background:linear-gradient(to bottom, var(--accent-2), #2bc4ad);
+}
+/* Layering order: navbar(10) > instructions(9) > content(5) > canvas(0) */
+#gameCanvas{
+  position:absolute; 
+  inset:0; 
+  width:100%; 
+  height:100%; 
+  z-index:0; 
+  background:transparent;
+  pointer-events: none;
+}
+main, section{ position:relative; z-index:5; }
+
+/* ---------------------- Nav Bar ---------------------- */
+.navbar {
+  position: fixed; inset: 0 0 auto 0;
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 16px;
+  background: rgba(43, 30, 56, 0.65);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navbar .brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: #fff; font-weight: 700; letter-spacing: .2px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.navbar .brand::after {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: linear-gradient(45deg, #2bc4ad, #11999e);
+  box-shadow: 0 0 8px rgba(141, 231, 218, 0.6);
+}
+
+.navbar .nav-links {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; gap: 12px;
+  flex: 1;                           
+  justify-content: space-evenly;      
+  align-items: center;
+  min-width: 0;                     
+}
+.navbar .nav-links li { white-space: nowrap; }
+
+.navbar .nav-links li button,
+.navbar .nav-links li a {
+  background: none; border: 0; color: #fff; font: inherit; cursor: pointer;
+  padding: 8px 10px; border-radius: 10px; text-decoration: none;
+}
+
+.navbar .nav-links li a:hover,
+.navbar .nav-links li button:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.navbar .nav-links .active {
+  background: rgba(43,196,173,0.2);
+  outline: 1px solid rgba(43,196,173,0.35);
+}
+
+section[id] { scroll-margin-top: 84px; }
+
+/* ---------------------- Container and main structuring ----------------------  */
+.top-container{
+  background:var(--bg-soft);
+  padding-top:10px;
+  min-height:100vh;
+}
+.skill-row, .experience-row{ max-width:1100px; width:90%; }
+@media (max-width:900px){
+  .code_img,.paint_img{ width:120px; float:none; display:block; margin:0 auto 12px; }
+  .profile{ width:90%; }
+}
+
+/* Home section is the game stage */
+#home { position: relative; min-height: 90vh; overflow: hidden; }
+
+/* Canvas stays inside Home only */
+#gameCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;            /* behind Home content */
+  background: transparent;
+  pointer-events: none;  /* click-through */
+}
+
+.instructions{
+  position: fixed;
+  top: calc(var(--nav-h) + 12px); 
+  right: 16px;
+  z-index: 90;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  text-align: left;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+.instructions kbd{
+  background:#222; border-radius:4px; padding:1px 5px;
+  font-family:ui-monospace, SFMono-Regular, Menlo, monospace;
+} 
+.instructions.fade {
+  opacity: 0;
+  transform: translateY(-50px);
+  pointer-events: none;
+}
+
+/* Score HUD*/
+.score-hud {
+  position: fixed;
+  top: calc(var(--nav-h) + 12px); 
+  left: 16px;
+  z-index: 5;
+  background: rgba(0,0,0,0.58);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.95rem;
+}
+.score-hud.fade {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  pointer-events: none;
+}
+
+/* ---------------------- Section scaffolding ----------------------*/
+section.section {
+  padding: clamp(48px, 7vw, 96px) 0;
+  background: #eaddef;
+  position: relative;
+}
+
+section.section .container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  min-height: 50vh;
+}
+
+section.section.alt {
+  background: #edc0ff;
+}
+
+.section + .section::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 92vw);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  margin-top: -1px; /* sits between sections */
+}
+
+.section h2.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(24px, 3.2vw, 34px);
+  margin: 0 0 16px;
+  letter-spacing: 0.2px;
+}
+
+.section p.section-subtitle {
+  color: #5b6b7a;
+  margin: 0 0 32px;
+}
+
+/* ---------------------- Skills Section ---------------------- */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.skill-card {
+  padding: 16px; border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px; background: #fff;
+}
+.skill-card h3 { margin: 0 0 8px; font-size: 18px; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag {
+  background: #eef7f7; color: #0d6b6b; padding: 4px 8px; border-radius: 999px; font-size: 12px;
+}
+
+/* ---------------------- Contact Section ---------------------- */
+#contact {
+  max-height: 20vh;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.contact-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  color: var(--brand); /* uses your main accent color */
+}
+
+.contact-btn:hover {
+  background: var(--bg-soft);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  color: #fff;
+}
